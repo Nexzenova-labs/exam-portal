@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Exam {
+  id            String         @id @default(cuid())
+  title         String
+  description   String?
+  questions     String
+  answers       String
+  totalMarks    Int
+  isActive      Boolean        @default(true)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  registrations Registration[]
+}
+
+model Registration {
+  id            String        @id @default(cuid())
+  examId        String
+  exam          Exam          @relation(fields: [examId], references: [id])
+  name          String
+  branch        String
+  section       String
+  email         String
+  phone         String
+  emailVerified Boolean       @default(false)
+  phoneVerified Boolean       @default(false)
+  examLink      String?       @unique
+  linkSent      Boolean       @default(false)
+  attemptsUsed  Int           @default(0)
+  maxAttempts   Int           @default(2)
+  createdAt     DateTime      @default(now())
+  sessions      ExamSession[]
+  submissions   Submission[]
+  otps          OTP[]
+
+  @@unique([examId, email])
+}
+
+model OTP {
+  id             String        @id @default(cuid())
+  registrationId String?
+  registration   Registration? @relation(fields: [registrationId], references: [id])
+  identifier     String
+  type           String
+  code           String
+  expiresAt      DateTime
+  verified       Boolean       @default(false)
+  createdAt      DateTime      @default(now())
+}
+
+model ExamSession {
+  id             String       @id @default(cuid())
+  registrationId String
+  registration   Registration @relation(fields: [registrationId], references: [id])
+  token          String       @unique
+  startedAt      DateTime?
+  endedAt        DateTime?
+  status         String       @default("pending")
+  createdAt      DateTime     @default(now())
+}
+
+model Submission {
+  id             String       @id @default(cuid())
+  registrationId String
+  registration   Registration @relation(fields: [registrationId], references: [id])
+  examId         String
+  sessionId      String
+  answers        String
+  score          Int
+  totalMarks     Int
+  percentage     Float
+  resultSent     Boolean      @default(false)
+  submittedAt    DateTime     @default(now())
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
