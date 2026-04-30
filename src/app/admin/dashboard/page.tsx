@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -27,15 +27,16 @@ export default function Dashboard() {
   const [newExam, setNewExam] = useState<{ title: string; registerLink: string; qrCode: string; totalQuestions: number } | null>(null);
   const [activeTab, setActiveTab] = useState<"exams" | "upload">("exams");
 
-  async function loadExams() {
+  const loadExams = useCallback(async () => {
     const res = await fetch("/api/admin/exams");
     if (res.status === 401) { router.push("/admin"); return; }
     const data = await res.json();
     setExams(data.exams || []);
     setLoading(false);
-  }
+  }, [router]);
 
-  useEffect(() => { loadExams(); }, []);
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => { loadExams(); }, [loadExams]);
 
   async function handleUpload(e: React.FormEvent) {
     e.preventDefault();

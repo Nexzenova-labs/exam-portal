@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 
 interface Student {
@@ -39,7 +39,7 @@ export default function ExamScores() {
   const [grantingId, setGrantingId] = useState<string | null>(null);
   const [search, setSearch] = useState("");
 
-  async function load() {
+  const load = useCallback(async () => {
     const res = await fetch(`/api/admin/exams/${examId}`);
     if (res.status === 401) { router.push("/admin"); return; }
     const data = await res.json();
@@ -47,9 +47,10 @@ export default function ExamScores() {
     setExam(data.exam);
     setStudents(data.students);
     setLoading(false);
-  }
+  }, [examId, router]);
 
-  useEffect(() => { load(); }, [examId]);
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => { load(); }, [load]);
 
   function downloadCSV() {
     const headers = ["Name", "Branch", "Section", "Email", "Phone", "Status", "Score", "Total", "Percentage", "Attempts", "Registered At", "Submitted At"];
