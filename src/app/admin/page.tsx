@@ -80,7 +80,7 @@ export default function AdminPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-500/20 border border-blue-400/30 mb-4 backdrop-blur-sm">
             <span className="text-3xl">📝</span>
           </div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">Exam Portal</h1>
+          <h1 className="text-3xl font-bold text-white tracking-tight">Quiz Portal</h1>
           <p className="text-blue-200/60 text-sm mt-1">Administration Console</p>
         </div>
 
@@ -246,7 +246,7 @@ export default function AdminPage() {
         </div>
 
         <p className="text-center text-white/20 text-xs mt-6">
-          Exam Portal · Powered by NexZen
+          Quiz Portal · Powered by NexZen
         </p>
       </div>
     </div>

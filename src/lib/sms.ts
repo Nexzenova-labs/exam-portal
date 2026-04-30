@@ -12,7 +12,7 @@ export async function sendOTPSMS(phone: string, otp: string): Promise<boolean> {
     const twilio = (await import("twilio")).default;
     const client = twilio(sid, token);
     await client.messages.create({
-      body: `Your Exam Portal OTP is: ${otp}. Valid for 10 minutes. Do not share.`,
+      body: `Your Quiz Portal OTP is: ${otp}. Valid for 10 minutes. Do not share.`,
       from,
       to: phone.startsWith("+") ? phone : `+91${phone}`,
     });

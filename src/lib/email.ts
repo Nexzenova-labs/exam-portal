@@ -17,7 +17,7 @@ export async function sendOTPEmail(email: string, otp: string, name: string) {
     subject: "Your OTP for Exam Registration",
     html: `
       <div style="font-family:Arial,sans-serif;max-width:480px;margin:auto;padding:32px;border:1px solid #e5e7eb;border-radius:8px;">
-        <h2 style="color:#1d4ed8;">Exam Portal - Email Verification</h2>
+        <h2 style="color:#1d4ed8;">Quiz Portal - Email Verification</h2>
         <p>Hi <strong>${name}</strong>,</p>
         <p>Your One-Time Password (OTP) for email verification is:</p>
         <div style="font-size:36px;font-weight:bold;letter-spacing:8px;color:#1d4ed8;padding:16px;background:#eff6ff;border-radius:8px;text-align:center;">

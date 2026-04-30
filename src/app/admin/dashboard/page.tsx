@@ -82,7 +82,7 @@ export default function Dashboard() {
       {/* Nav */}
       <div className="bg-blue-700 text-white px-6 py-4 flex items-center justify-between shadow">
         <div>
-          <h1 className="text-xl font-bold">Exam Portal — Admin</h1>
+          <h1 className="text-xl font-bold">Quiz Portal — Admin</h1>
           <p className="text-blue-200 text-xs">Manage exams, students & results</p>
         </div>
         <button

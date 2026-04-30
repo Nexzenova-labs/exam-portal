@@ -1,4 +1,4 @@
-# 📝 Exam Portal
+# 📝 Quiz Portal
 
 A full-stack online examination platform built with **Next.js 16**, **Prisma ORM**, and **Supabase PostgreSQL**. It enables institutions to create and manage exams, register students via email/OTP verification, and conduct auto-graded assessments with result delivery.
 
@@ -34,7 +34,7 @@ A full-stack online examination platform built with **Next.js 16**, **Prisma ORM
 ## 📁 Project Structure
 
 ```
-exam-portal/
+quiz-portal/
 ├── prisma/
 │   ├── schema.prisma        # Database models (Exam, Registration, OTP, Session, Submission, Admin)
 │   └── migrations/          # SQL migration history
@@ -80,8 +80,8 @@ exam-portal/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Nexzenova-labs/exam-portal.git
-cd exam-portal
+git clone https://github.com/Nexzenova-labs/quiz-portal.git
+cd quiz-portal
 ```
 
 ### 2. Install Dependencies

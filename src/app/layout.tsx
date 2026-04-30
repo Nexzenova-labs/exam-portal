@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Exam Portal",
+  title: "Quiz Portal",
   description: "Online Exam Registration & Assessment Portal",
 };
 

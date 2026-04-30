@@ -83,3 +83,4 @@ prisma/dev.db
 skills/
 skills-lock.json
 CLAUDE.md
+.env*.local
